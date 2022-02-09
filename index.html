@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Cube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Roboto", sans-serif;
+
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 400px;
+        margin: 0;
+      }
+      .cube {
+        transform-style: preserve-3d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .side {
+        --default-size: 150px;
+
+        width: var(--default-size);
+        height: var(--default-size);
+        background-color: hsla(200, 100%, 50%, 0.5);
+        border: 2px solid hsla(200, 100%, 50%, 0.7);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 2rem;
+        transform: rotateX(var(--rotate-x, 0)) rotateY(var(--rotate-y, 0))
+          translateZ(calc(var(--default-size) / 2));
+      }
+      .right {
+        --rotate-y: 90deg;
+      }
+      .left {
+        --rotate-y: -90deg;
+      }
+      .back {
+        --rotate-y: 180deg;
+      }
+      .front {
+      }
+      .up {
+        --rotate-x: 90deg;
+      }
+      .down {
+        --rotate-x: -90deg;
+      }
+      .cube:hover {
+        animation: spinning 4s linear infinite;
+      }
+      @keyframes spinning {
+        0% {
+          transform: rotateX(0) rotateY(0);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cube">
+      <div class="side right">Right</div>
+      <div class="side left">Left</div>
+      <div class="side back">Back</div>
+      <div class="side front">Front</div>
+      <div class="side up">Up</div>
+      <div class="side down">Down</div>
+    </div>
+  </body>
+</html>
